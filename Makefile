@@ -6,11 +6,11 @@
 #    By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/03 19:34:07 by nahmed-m          #+#    #+#              #
-#*   Updated: 2016/02/04 00:43:21 by nahmed-m         ###   ########.fr       *#
+#*   Updated: 2016/02/04 19:59:41 by nahmed-m         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c
+SRC_NAME = main.c parsing.c
 
 NAME = ft_ls
 
