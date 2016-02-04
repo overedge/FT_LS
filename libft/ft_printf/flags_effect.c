@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   flags_effect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/04 00:04:30 by nahmed-m         ###   ########.fr       */
+/*   Created: 2016/01/19 20:34:05 by nahmed-m          #+#    #+#             */
+/*   Updated: 2016/02/01 02:22:27 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
-# include "libft/includes/libft.h"
+#include "ft_printf.h"
 
-#endif
+void	flags_effect(char *fmt, t_var *e)
+{
+	if (fmt[e->i] == '#' && fmt[e->i + 1] == '\0')
+		e->error = 1;
+	else if (fmt[e->i] == '#')
+	{
+		while (fmt[e->i] == '#')
+		{
+			e->f_effect = 1;
+			e->i++;
+		}
+	}
+}

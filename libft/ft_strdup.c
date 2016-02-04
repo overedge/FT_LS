@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/04 00:04:30 by nahmed-m         ###   ########.fr       */
+/*   Created: 2015/12/14 08:40:41 by nahmed-m          #+#    #+#             */
+/*   Updated: 2015/12/14 08:41:51 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
-# include "libft/includes/libft.h"
+#include "libft.h"
+#include <stdlib.h>
 
-#endif
+char	*ft_strdup(const char *s)
+{
+	char *dest;
+
+	dest = (char*)malloc(sizeof(s) * (ft_strlen(s) + 1));
+	if (dest == NULL)
+		return (NULL);
+	ft_strcpy(dest, s);
+	return (dest);
+}

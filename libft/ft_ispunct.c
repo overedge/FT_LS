@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   ft_ispunct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/04 00:04:30 by nahmed-m         ###   ########.fr       */
+/*   Created: 2015/12/15 15:22:24 by nahmed-m          #+#    #+#             */
+/*   Updated: 2015/12/15 15:24:03 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
-# include "libft/includes/libft.h"
+#include "libft.h"
 
-#endif
+int		ft_ispunct(int c)
+{
+	if (c == 46)
+		return (1);
+	else
+		return (0);
+}

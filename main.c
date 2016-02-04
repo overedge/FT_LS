@@ -6,14 +6,19 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/03 19:32:41 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/04 00:56:27 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
+static void parse_arg(int ac, char **av)
+{
+
+}
 int main(int argc, char **argv)
 {
-	
+	if (argc > 1)
+		parse_arg(argc, argv);
 	return (0);
 }

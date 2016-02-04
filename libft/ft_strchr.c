@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/04 00:04:30 by nahmed-m         ###   ########.fr       */
+/*   Created: 2015/12/14 08:53:12 by nahmed-m          #+#    #+#             */
+/*   Updated: 2015/12/14 08:53:40 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
-# include "libft/includes/libft.h"
+#include "libft.h"
 
-#endif
+char	*ft_strchr(const char *s, int c)
+{
+	size_t i;
+
+	i = 0;
+	while (i < ft_strlen(s) && *s != (char)c)
+		s++;
+	if (*s == c)
+		return ((char*)s);
+	return (NULL);
+}
