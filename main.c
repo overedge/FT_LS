@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/04 20:42:31 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/06 01:25:24 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ static void debug(t_env *e)
 		ft_printf("Flags '-t' Actived\n");
 	if (e->f_a == TRUE)
 		ft_printf("Flags '-a' Actived\n");
-	while (e->i < e->argc)
+	while (e->i < e->argc && e->i != 0)
 	{
+		ft_printf("ARGC : %d\n", e->argc);
 		ft_printf("ARGS : %s\n", e->argv[e->i]);
 		e->i++;
 	}
@@ -42,7 +43,10 @@ int		main(int argc, char **argv)
 	e.f_a = FALSE;
 	e.argc = argc;
 	e.argv = argv;
-	parse_arg(argc, argv, &e);
+	e.error = 0;
+	e.i = 0;
+	if (argc > 1)
+		parse_arg(argc, argv, &e);
 	debug(&e);
-	return (0);
+	return (e.error);
 }
