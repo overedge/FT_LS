@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/05 21:15:16 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/06 23:58:08 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft/includes/libft.h"
 # include <dirent.h>
 # include <stdio.h>
+# include <sys/stat.h>
 # define TRUE 1
 # define FALSE 0
 
@@ -40,7 +41,9 @@ void	parse_arg(int argc, char **argv, t_env *e);
 ** Print
 */
 void print_simple(char *dirpath, t_env *e);
-
+void selector(t_env *e);
+void ft_print_line(struct dirent *info, t_env *e, struct stat *info_file);
+void print_mode(struct dirent *info, t_env *e, struct stat *info_file);
 /*
 ** Utils
 */

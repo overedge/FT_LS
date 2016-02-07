@@ -6,31 +6,30 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/06 01:25:24 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/06 23:22:03 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void debug(t_env *e)
-{
-	if (e->f_R == TRUE)
-		ft_printf("Flags '-R' Actived\n");
-	if (e->f_r == TRUE)
-		ft_printf("Flags '-r' Actived\n");
-	if (e->f_l == TRUE)
-		ft_printf("Flags '-l' Actived\n");
-	if (e->f_t == TRUE)
-		ft_printf("Flags '-t' Actived\n");
-	if (e->f_a == TRUE)
-		ft_printf("Flags '-a' Actived\n");
-	while (e->i < e->argc && e->i != 0)
-	{
-		ft_printf("ARGC : %d\n", e->argc);
-		ft_printf("ARGS : %s\n", e->argv[e->i]);
-		e->i++;
-	}
-}
+//static void debug(t_env *e)
+//{
+//	if (e->f_R == TRUE)
+//		ft_printf("Flags '-R' Actived\n");
+//	if (e->f_r == TRUE)
+//		ft_printf("Flags '-r' Actived\n");
+//	if (e->f_l == TRUE)
+//		ft_printf("Flags '-l' Actived\n");
+//	if (e->f_t == TRUE)
+//		ft_printf("Flags '-t' Actived\n");
+//	if (e->f_a == TRUE)
+//		ft_printf("Flags '-a' Actived\n");
+//	while (e->i < e->argc && e->i != 0)
+//	{
+//		ft_printf("ARGS : %s\n", e->argv[e->i]);
+//		e->i++;
+//	}
+//}
 
 int		main(int argc, char **argv)
 {
@@ -47,6 +46,7 @@ int		main(int argc, char **argv)
 	e.i = 0;
 	if (argc > 1)
 		parse_arg(argc, argv, &e);
-	debug(&e);
+//	debug(&e);
+	selector(&e);
 	return (e.error);
 }

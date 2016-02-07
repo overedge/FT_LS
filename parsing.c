@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/06 01:18:33 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/06 23:24:05 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void			parse_arg(int argc, char **argv, t_env *e)
 		else
 		{
 			e->i = i;
-			ft_printf("il y a %d args", e->i);
 			return ;
 		}
 		i++;
