@@ -14,11 +14,11 @@
 
 void ft_print_line(struct dirent *infos, t_env *e, struct stat *info_file)
 {
-	print_mode(infos, e, info_file);
-	print_inod(infos, e, info_file);
-	print_user(infos, e, info_file);
-	print_group(infos, e, info_file);
-	print_size(infos, e, info_file);
+	print_mode(info_file);
+	print_link(info_file);
+	print_user(info_file);
+	print_group(info_file);
+//	print_size(infos, e, info_file);
 
 }
 
@@ -36,7 +36,7 @@ void	print_simple(char *dirpath, t_env *e)
 	while ((infos = readdir(directory)) != NULL)
 	{
 		stat(infos->d_name, &info_file);
-		if (e->f_l == TRUE)
+		if (e->f_l == TRUE && infos->d_name[0] != '.')
 			ft_print_line(infos, e, &info_file);
 		if (infos->d_name[0] != '.')
 			ft_printf("%s\n", infos->d_name);

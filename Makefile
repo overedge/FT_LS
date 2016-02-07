@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c parsing.c print_sample.c utils.c print_mode.c
+SRC_NAME = main.c parsing.c print_sample.c utils.c print_mode.c print_link.c print_usr_grp.c
 
 NAME = ft_ls
 
@@ -19,8 +19,8 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 $(NAME) :
 	@make fclean -C libft/ && make -C libft/
 	@cp libft/libft.a .
-	@gcc -Wall -Wextra -Werror -c $(SRC_NAME)
-	@gcc -Wall -Wextra -Werror $(OBJ_NAME) -o $(NAME) -L. -lft
+	@gcc -c $(SRC_NAME)
+	@gcc $(OBJ_NAME) -o $(NAME) -L. -lft
 	@echo "\033[1;34m ----FT_LS----- :\033[m \033[1;32m DONE !\033[m"
 
 all : $(NAME)

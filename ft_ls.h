@@ -16,6 +16,8 @@
 # include <dirent.h>
 # include <stdio.h>
 # include <sys/stat.h>
+# include <pwd.h>
+# include <grp.h>
 # define TRUE 1
 # define FALSE 0
 
@@ -43,7 +45,10 @@ void	parse_arg(int argc, char **argv, t_env *e);
 void print_simple(char *dirpath, t_env *e);
 void selector(t_env *e);
 void ft_print_line(struct dirent *info, t_env *e, struct stat *info_file);
-void print_mode(struct dirent *info, t_env *e, struct stat *info_file);
+void print_mode(struct stat *info_file);
+void print_link(struct stat *info_file);
+void print_user(struct stat *info_file);
+void print_group(struct stat *info_file);
 /*
 ** Utils
 */
