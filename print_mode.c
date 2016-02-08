@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 23:37:17 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/06 23:43:10 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/07 22:56:31 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 static void special(struct stat *info_file)
 {
-	int mask;
-
-	mask = info_file->st_mode & S_IFMT;
-	if (mask == S_IFLNK)
+	if (S_ISLNK(info_file->st_mode))
 		ft_putchar('l');
-	else if (mask == S_IFDIR)
+	else if (S_ISDIR(info_file->st_mode))
 		ft_putchar('d');
-	else if (mask == S_IFBLK)
+	else if (S_ISBLK(info_file->st_mode))
 		ft_putchar('b');
-	else if (mask == S_IFCHR)
+	else if (S_ISCHR(info_file->st_mode))
 		ft_putchar('c');
-	else if (mask == S_IFSOCK)
+	else if (S_ISSOCK(info_file->st_mode))
 		ft_putchar('s');
-	else if (mask == S_IFIFO)
+	else if (S_ISFIFO(info_file->st_mode))
 		ft_putchar('p');
 	else
 		ft_putchar('-');

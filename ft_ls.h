@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/06 23:58:08 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/07 22:39:11 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/stat.h>
 # include <pwd.h>
 # include <grp.h>
+# include <time.h>
 # define TRUE 1
 # define FALSE 0
 
@@ -49,6 +50,8 @@ void print_mode(struct stat *info_file);
 void print_link(struct stat *info_file);
 void print_user(struct stat *info_file);
 void print_group(struct stat *info_file);
+void print_size(struct stat *info_file);
+void print_time(struct stat *info_file);
 /*
 ** Utils
 */

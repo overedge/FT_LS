@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:18:11 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/07 00:18:51 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/07 22:27:54 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void ft_print_line(struct dirent *infos, t_env *e, struct stat *info_file)
 	print_link(info_file);
 	print_user(info_file);
 	print_group(info_file);
-//	print_size(infos, e, info_file);
-
+	print_size(info_file);
+	print_time(info_file);
 }
 
 void	print_simple(char *dirpath, t_env *e)

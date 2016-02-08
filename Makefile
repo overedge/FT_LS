@@ -6,11 +6,11 @@
 #    By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/03 19:34:07 by nahmed-m          #+#    #+#              #
-#*   Updated: 2016/02/06 23:37:47 by nahmed-m         ###   ########.fr       *#
+#*   Updated: 2016/02/07 22:21:36 by nahmed-m         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c parsing.c print_sample.c utils.c print_mode.c print_link.c print_usr_grp.c
+SRC_NAME = main.c parsing.c print_sample.c utils.c print_mode.c print_link.c print_usr_grp.c print_size.c print_time.c
 
 NAME = ft_ls
 
