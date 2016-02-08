@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/08 02:44:48 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/08 13:45:24 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct s_env
 	char	error;
 }				t_env;
 
+typedef struct s_file
+{
+	char *str;
+}				t_file;
 /*
 ** Parsing
 */

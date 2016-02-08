@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/06 23:22:03 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/08 14:55:56 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		main(int argc, char **argv)
 	e.i = 0;
 	if (argc > 1)
 		parse_arg(argc, argv, &e);
-//	debug(&e);
+//	debug(&e)
 	selector(&e);
 	return (e.error);
 }
