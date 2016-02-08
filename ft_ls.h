@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/07 22:39:11 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/08 02:44:48 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	parse_arg(int argc, char **argv, t_env *e);
 /*
 ** Print
 */
-void print_simple(char *dirpath, t_env *e);
+void print_upper_a(char *dirpath, t_env *e);
+void print_lower(char *dirpath, t_env *e);
 void selector(t_env *e);
 void ft_print_line(struct dirent *info, t_env *e, struct stat *info_file);
 void print_mode(struct stat *info_file);
@@ -56,5 +57,6 @@ void print_time(struct stat *info_file);
 ** Utils
 */
 void error_dir(char *dirpath, t_env *e);
-
+int		ft_isupper(char c);
+int		ft_islower(char c);
 #endif
