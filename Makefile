@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c parsing.c print_sample.c utils.c print_mode.c print_link.c print_usr_grp.c print_size.c print_time.c
+SRC_NAME = main.c parsing.c control.c utils.c print_mode.c print_link.c print_usr_grp.c print_size.c print_time.c sort.c
 
 NAME = ft_ls
 

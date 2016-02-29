@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/08 02:17:22 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/29 05:20:56 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,33 @@ void	error_dir(char *dirpath, t_env *e)
 	e->error = 1;
 }
 
-int		ft_isupper(char c)
+void	add_link(char *path, t_file **file)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	else
-		return (0);
+	t_file *tmp;
+	t_file *new;
+
+	tmp = *file;
+	new = (t_file*)malloc(sizeof(t_file));
+	new->str = ft_strdup(path);
+	new->next = NULL;
+	if (!tmp)
+	{
+		*file = new;
+		return ;
+	}
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
 
-int		ft_islower(char c)
+void	print_list(t_file **list)
 {
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	else
-		return (0);
+	t_file *tmp;
+
+	tmp = *list;
+	while(tmp)
+	{
+		ft_printf("%s\n", tmp->str);
+		tmp = tmp->next;
+	}
 }
