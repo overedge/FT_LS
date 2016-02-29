@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/29 05:26:23 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/29 16:46:07 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	parse_arg(int argc, char **argv, t_env *e);
 */
 void path_to_list(char *dirpath, t_env *e, t_file **path);
 void selector(t_env *e);
-void ft_print_line(struct dirent *info, t_env *e, struct stat *info_file);
+void ft_print_line(t_file **list);
 void print_mode(struct stat *info_file);
 void print_link(struct stat *info_file);
 void print_user(struct stat *info_file);
@@ -66,7 +66,7 @@ void print_time(struct stat *info_file);
 void error_dir(char *dirpath, t_env *e);
 void add_link(char *path, t_file **file);
 void print_list(t_file **list);
-
+void del_list(t_file **list);
 /*
 ** Sort
 */

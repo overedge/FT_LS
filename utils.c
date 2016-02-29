@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/29 05:20:56 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/02/29 16:27:57 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,20 @@ void	print_list(t_file **list)
 		ft_printf("%s\n", tmp->str);
 		tmp = tmp->next;
 	}
+}
+
+void	del_list(t_file **list)
+{
+	t_file *tmp;
+
+	tmp = *list;
+
+	while (tmp)
+	{
+		*list = tmp->next;
+		free(tmp);
+		tmp = *list;
+	}
+	tmp = NULL;
+	list = NULL;
 }
