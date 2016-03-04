@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 23:37:17 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/07 22:56:31 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/03 15:39:32 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static void special(struct stat *info_file)
 {
-	if (S_ISLNK(info_file->st_mode))
+	if (S_ISLNK(info_file->st_mode & S_IFMT))
 		ft_putchar('l');
-	else if (S_ISDIR(info_file->st_mode))
+	else if (S_ISDIR(info_file->st_mode & S_IFMT))
 		ft_putchar('d');
-	else if (S_ISBLK(info_file->st_mode))
+	else if (S_ISBLK(info_file->st_mode & S_IFMT))
 		ft_putchar('b');
-	else if (S_ISCHR(info_file->st_mode))
+	else if (S_ISCHR(info_file->st_mode & S_IFMT))
 		ft_putchar('c');
-	else if (S_ISSOCK(info_file->st_mode))
+	else if (S_ISSOCK(info_file->st_mode & S_IFMT))
 		ft_putchar('s');
-	else if (S_ISFIFO(info_file->st_mode))
+	else if (S_ISFIFO(info_file->st_mode & S_IFMT))
 		ft_putchar('p');
 	else
 		ft_putchar('-');

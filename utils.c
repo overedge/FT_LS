@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/29 16:27:57 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/04 01:08:35 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,33 @@ void	add_link(char *path, t_file **file)
 	tmp->next = new;
 }
 
-void	print_list(t_file **list)
+void	print_list(t_file **list, t_env *e)
 {
 	t_file *tmp;
-
+	struct stat info_file;
+	
+	//if (e->f_r == 1)
+	//reverse_list(list);
 	tmp = *list;
 	while(tmp)
 	{
+		if (e->f_a == 0 && tmp->str[0] == '.')
+			tmp = tmp->next;
+		else
+		{
+			if (e->f_l == 1)
+			{
+				stat(tmp->str, &info_file);
+				print_mode(&info_file);
+				print_link(&info_file);
+				print_user(&info_file);
+				print_group(&info_file);
+				print_size(&info_file);
+				print_time(&info_file);
+			}
 		ft_printf("%s\n", tmp->str);
 		tmp = tmp->next;
+		}
 	}
 }
 
@@ -63,4 +81,17 @@ void	del_list(t_file **list)
 	}
 	tmp = NULL;
 	list = NULL;
+}
+
+void env_list(t_file **list, t_env *e)
+{
+	t_file *tmp;
+
+	tmp = *list;
+
+	while (tmp)
+	{
+		// recup les staat des file et update les env
+		tmp = tmp->next;
+	}
 }
