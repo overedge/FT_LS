@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 05:22:55 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/02/29 16:16:29 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/04 19:51:29 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void swap(char **str, char **str2)
 	*str2 = tmp;
 }
 
-void sort_list(t_file **list)
+void sort_list(t_file **list, t_env *e)
 {
 	t_file *tmp;
 	t_file *tmp2;
@@ -30,7 +30,8 @@ void sort_list(t_file **list)
 	tmp2 = tmp->next;
 	while (tmp2)
 	{
-		if (ft_strcmp(tmp->str, tmp2->str) > 0)
+		if (e->f_r == 0 ? ft_strcmp(tmp->str, tmp2->str) > 0 :
+				ft_strcmp(tmp->str, tmp2->str) < 0)
 		{
 			swap(&tmp->str, &tmp2->str);
 			tmp = *list;

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/04 01:08:35 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/04 20:23:36 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	print_list(t_file **list, t_env *e)
 	t_file *tmp;
 	struct stat info_file;
 	
-	//if (e->f_r == 1)
-	//reverse_list(list);
 	tmp = *list;
+	if (tmp && e->f_l == 1)
+		ft_printf("total %ld\n", e->display->nb_block);
 	while(tmp)
 	{
 		if (e->f_a == 0 && tmp->str[0] == '.')
@@ -53,7 +53,7 @@ void	print_list(t_file **list, t_env *e)
 		{
 			if (e->f_l == 1)
 			{
-				stat(tmp->str, &info_file);
+				lstat(tmp->str, &info_file);
 				print_mode(&info_file);
 				print_link(&info_file);
 				print_user(&info_file);
@@ -86,12 +86,20 @@ void	del_list(t_file **list)
 void env_list(t_file **list, t_env *e)
 {
 	t_file *tmp;
+	struct stat info;
+	t_display display;
 
 	tmp = *list;
-
+	display.nb_block = 0;
 	while (tmp)
 	{
-		// recup les staat des file et update les env
+		lstat(tmp->str, &info);
+		if (e->f_a == 0 && tmp->str[0] == '.')
+			display.nb_block = display.nb_block;
+		else
+			display.nb_block += info.st_blocks;
 		tmp = tmp->next;
 	}
+
+	e->display = &display;
 }

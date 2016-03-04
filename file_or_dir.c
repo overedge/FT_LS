@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 00:38:51 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/03 18:04:11 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/04 19:23:47 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void detect_dir(t_env *e, char *path, t_file **file, t_file **dir)
 {
 	struct stat file_info;
 
-	if (stat(path, &file_info) == 0)
+	if (lstat(path, &file_info) == 0)
 	{
 		if ((file_info.st_mode & S_IFMT) == S_IFDIR)
 			add_link(path, dir);

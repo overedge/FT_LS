@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/04 01:06:40 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/04 20:19:12 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef struct s_display
+{
+	unsigned long nb_block;
+}				t_display;
+
 typedef struct s_env
 {
 	char	f_R;
@@ -38,12 +43,12 @@ typedef struct s_env
 	int		i;
 	char	error;
 	char	overload;
+	t_display *display;
 }				t_env;
-
 
 typedef struct s_file
 {
-	char			*str;
+	char		*str;
 	struct s_file	*next;
 }				t_file;
 
@@ -66,7 +71,7 @@ void print_time(struct stat *info_file);
 ** Utils
 */
 void error_dir(char *dirpath, t_env *e);
-void add_link(char *path, t_file **file);
+void add_link(char *str, t_file **file);
 void print_list(t_file **list, t_env *e);
 void del_list(t_file **list);
 void env_list(t_file **list, t_env *e);
@@ -74,7 +79,7 @@ void env_list(t_file **list, t_env *e);
 /*
 ** Sort
 */
-void sort_list(t_file **list);
+void sort_list(t_file **list, t_env *e);
 
 /*
 ** File Or Dir

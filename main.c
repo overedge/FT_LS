@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/04 00:47:26 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/04 16:51:45 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void constructor(t_env *e, int argc, char **argv)
 	e->f_t = FALSE;
 	e->f_r = FALSE;
 	e->f_a = FALSE;
-	e->error = 0;
-	e->overload = 0;
-	e->i = 0;
+	e->error = FALSE;
+	e->overload = FALSE;
+	e->i = FALSE;
 }
 
 int		main(int argc, char **argv)
