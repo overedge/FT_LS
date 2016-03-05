@@ -1,10 +1,10 @@
 #include "ft_ls.h"
 
-void print_group(struct stat *info_file)
+void print_group(struct stat info_file)
 {
 	struct group *group;
 
-	if ((group = getgrgid(info_file->st_gid)) == NULL)
+	if ((group = getgrgid(info_file.st_gid)) == NULL)
 	{
 		perror("");
 		return ;
@@ -12,11 +12,11 @@ void print_group(struct stat *info_file)
 	ft_printf("%s  ", group->gr_name);
 }
 
-void print_user(struct stat *info_file)
+void print_user(struct stat info_file)
 {
 	struct passwd *user;
 
-	if ((user = getpwuid(info_file->st_uid)) == NULL)
+	if ((user = getpwuid(info_file.st_uid)) == NULL)
 	{
 		perror("");
 		return;

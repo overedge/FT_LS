@@ -12,13 +12,13 @@
 
 #include "ft_ls.h"
 
-void	print_time(struct stat *info_file)
+void	print_time(struct stat info_file)
 {
 	char *str;
 	char **date;
 	char **hour;
 
-	str = ctime(&info_file->st_mtime);
+	str = ctime(&info_file.st_mtime);
 	date = ft_strsplit(str, ' ');
 	ft_printf("%-s ", date[2]);
 	ft_printf("%-s ", date[1]);

@@ -19,9 +19,9 @@ static void exep_file(t_env *e, t_file **file)
 	tmp = *file;
 	if (tmp)
 	{
-		e->overload = 1;
 		sort_list(file, e);
 		print_list(file, e);
+		e->overload = 1;
 		del_list(file);
 	}
 }
@@ -40,9 +40,10 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 	{
 		if (e->overload == 1)
 			ft_printf("\n%s:\n", tmp->str);
+		e->overload = 1;
 		directory = opendir(tmp->str);
 		while ((dir_info = readdir(directory)) != NULL)
-			add_link(dir_info->d_name, file);
+			add_link(ft_strjoin(tmp->str, ft_strjoin("/", dir_info->d_name)), file);
 		env_list(file, e);
 		sort_list(file, e);
 		print_list(file, e);

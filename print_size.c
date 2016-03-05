@@ -12,8 +12,8 @@
 
 #include "ft_ls.h"
 
-void	print_size(struct stat *info_file)
+void	print_size(struct stat info_file)
 {
-	ft_printf("%7lld  ", info_file->st_size);
+	ft_printf("%7ld  ", info_file.st_size);
 }
 

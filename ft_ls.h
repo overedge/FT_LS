@@ -16,6 +16,8 @@
 # include <dirent.h>
 # include <stdio.h>
 # include <sys/stat.h>
+# include <sys/types.h>
+# include <unistd.h>
 # include <pwd.h>
 # include <grp.h>
 # include <time.h>
@@ -29,6 +31,7 @@
 typedef struct s_display
 {
 	unsigned long nb_block;
+	int			len_path;
 }				t_display;
 
 typedef struct s_env
@@ -60,12 +63,12 @@ void	parse_arg(int argc, char **argv, t_env *e);
 /*
 ** Print
 */
-void print_mode(struct stat *info_file);
-void print_link(struct stat *info_file);
-void print_user(struct stat *info_file);
-void print_group(struct stat *info_file);
-void print_size(struct stat *info_file);
-void print_time(struct stat *info_file);
+void print_mode(struct stat info_file);
+void print_link(struct stat info_file);
+void print_user(struct stat info_file);
+void print_group(struct stat info_file);
+void print_size(struct stat info_file);
+void print_time(struct stat info_file);
 
 /*
 ** Utils
