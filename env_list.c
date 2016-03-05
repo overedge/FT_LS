@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 16:37:01 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/05 20:17:42 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void env_list(t_file **list, t_env *e)
 	display = malloc(sizeof(t_display));
 	display->nb_block = 0;
 	display->lnk = 0;
+	display->siz = 0;
 	while (tmp)
 	{
 		lstat(tmp->str, &info);
@@ -33,8 +34,11 @@ void env_list(t_file **list, t_env *e)
 		{
 			display->nb_block += info.st_blocks;
 			info.st_nlink > display->lnk ? display->lnk = info.st_nlink : 0;
+			info.st_size > display->siz ? display->siz = info.st_size : 0;
 		}
 		tmp = tmp->next;
 	}
 	e->display = display;
+	e->display->lnk = len_nbr(e->display->lnk);
+	e->display->siz = len_nbr(e->display->siz);
 }

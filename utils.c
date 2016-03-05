@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 16:07:19 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/05 20:06:43 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	print_list(t_file **list, t_env *e)
 				print_link(info_file, e);
 				print_user(info_file);
 				print_group(info_file);
-				print_size(info_file);
-				print_time(info_file);
+				print_size(info_file, e);
+				print_time(info_file, e);
 			}
 		print_path(tmp->str, info_file, e);
 		tmp = tmp->next;
@@ -85,14 +85,15 @@ void	del_list(t_file **list)
 	list = NULL;
 }
 
-void	ft_putspace(int space)
+unsigned long len_nbr(unsigned long nbr)
 {
 	int		i;
 
 	i = 0;
-	while (i < space)
+	while (nbr != 0)
 	{
-		ft_putchar(' ');
+		nbr = nbr / 10;
 		i++;
 	}
+	return (i);
 }

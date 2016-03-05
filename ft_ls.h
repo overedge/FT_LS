@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 16:32:11 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/05 20:12:27 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_display
 {
 	unsigned long nb_block;
 	int lnk;
+	unsigned long siz;
 }				t_display;
 
 typedef struct s_env
@@ -68,8 +69,8 @@ void print_mode(struct stat info_file);
 void print_link(struct stat info_file, t_env *e);
 void print_user(struct stat info_file);
 void print_group(struct stat info_file);
-void print_size(struct stat info_file);
-void print_time(struct stat info_file);
+void print_size(struct stat info_file, t_env *e);
+void print_time(struct stat info_file, t_env *e);
 void print_path(char *str, struct stat info_file, t_env *e);
 
 /*
@@ -79,8 +80,7 @@ void error_dir(char *dirpath, t_env *e);
 void add_link(char *str, t_file **file);
 void print_list(t_file **list, t_env *e);
 void del_list(t_file **list);
-void ft_putspace(int space);
-
+unsigned long len_nbr(unsigned long nbr);
 /*
 ** Sort
 */
