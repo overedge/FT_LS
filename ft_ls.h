@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/04 20:19:12 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/05 16:32:11 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@
 
 # define TRUE 1
 # define FALSE 0
-
 typedef struct s_display
 {
 	unsigned long nb_block;
-	int			len_path;
+	int lnk;
 }				t_display;
 
 typedef struct s_env
@@ -41,6 +40,8 @@ typedef struct s_env
 	char	f_t;
 	char	f_r;
 	char	f_a;
+	char	f_e;
+	char	f_c;
 	int		argc;
 	char	**argv;
 	int		i;
@@ -64,11 +65,12 @@ void	parse_arg(int argc, char **argv, t_env *e);
 ** Print
 */
 void print_mode(struct stat info_file);
-void print_link(struct stat info_file);
+void print_link(struct stat info_file, t_env *e);
 void print_user(struct stat info_file);
 void print_group(struct stat info_file);
 void print_size(struct stat info_file);
 void print_time(struct stat info_file);
+void print_path(char *str, struct stat info_file, t_env *e);
 
 /*
 ** Utils
@@ -77,7 +79,7 @@ void error_dir(char *dirpath, t_env *e);
 void add_link(char *str, t_file **file);
 void print_list(t_file **list, t_env *e);
 void del_list(t_file **list);
-void env_list(t_file **list, t_env *e);
+void ft_putspace(int space);
 
 /*
 ** Sort
@@ -89,8 +91,14 @@ void sort_list(t_file **list, t_env *e);
 */
 void file_or_dir(t_env *e, t_file **file, t_file **dir);
 void detect_dir(t_env *e, char *path, t_file **file, t_file **dir);
+
 /*
 ** Controler
 */
 void controler(t_env *e, t_file **file, t_file **dir);
+
+/*
+** Env List
+*/
+void env_list(t_file **list, t_env *e);
 #endif

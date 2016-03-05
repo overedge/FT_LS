@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/02 20:33:18 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/05 14:44:39 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static void		on_off(char *str, t_env *e)
 			e->f_t = TRUE;
 		else if (str[i] == 'a')
 			e->f_a = TRUE;
+		else if (str[i] == 'e')
+			e->f_e = TRUE;
+		else if (str[i] == 'c')
+			e->f_c = TRUE;
 		i++;
 	}
 }
