@@ -1,6 +1,6 @@
 #include "ft_ls.h"
 
-void print_group(struct stat info_file)
+void print_group(struct stat info_file, t_env *e)
 {
 	struct group *group;
 
@@ -9,10 +9,10 @@ void print_group(struct stat info_file)
 		perror("");
 		return ;
 	}
-	ft_printf("%s  ", group->gr_name);
+	ft_printf("%-*s  ", e->display->grs, group->gr_name);
 }
 
-void print_user(struct stat info_file)
+void print_user(struct stat info_file, t_env *e)
 {
 	struct passwd *user;
 
@@ -21,5 +21,5 @@ void print_user(struct stat info_file)
 		perror("");
 		return;
 	}
-	ft_printf("%s  ", user->pw_name);
+	ft_printf("%-*s  ", e->display->own ,user->pw_name);
 }

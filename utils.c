@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 20:06:43 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 01:16:15 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void	print_list(t_file **list, t_env *e)
 			{
 				print_mode(info_file);
 				print_link(info_file, e);
-				print_user(info_file);
-				print_group(info_file);
+				print_user(info_file, e);
+				print_group(info_file, e);
 				print_size(info_file, e);
-				print_time(info_file, e);
+				print_time(info_file);
 			}
 		print_path(tmp->str, info_file, e);
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 18:45:49 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 00:46:31 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void exep_file(t_env *e, t_file **file)
 	tmp = *file;
 	if (tmp)
 	{
-		sort_list(file, e);
 		env_list(file, e);
+		sort_list(file, e);
 		print_list(file, e);
 		e->overload = 1;
 		del_list(file);
@@ -42,11 +42,15 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 		if (e->overload == 1)
 			ft_printf("\n%s:\n", tmp->str);
 		e->overload = 1;
-		directory = opendir(tmp->str);
+		if ((directory = opendir(tmp->str)) == NULL)
+		{
+			error_dir(tmp->str, e);
+			return ;
+		}
 		while ((dir_info = readdir(directory)) != NULL)
 			add_link(dir_info->d_name, file);
-		sort_list(file, e);
 		env_list(file, e);
+		sort_list(file, e);
 		print_list(file, e);
 		del_list(file);
 		tmp = tmp->next;
