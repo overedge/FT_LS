@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 22:10:30 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 19:07:25 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 20:22:22 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void	print_size(struct stat info_file, t_env *e)
 {
-	ft_printf("%*lld ", e->display->siz, info_file.st_size);
+	if (S_ISCHR(info_file.st_mode & S_IFMT))
+		ft_printf("%3d, %3d ", major(info_file.st_rdev), minor(info_file.st_rdev));
+	else if (S_ISBLK(info_file.st_mode & S_IFMT))
+		ft_printf("%3d, %3d ", major(info_file.st_rdev), minor(info_file.st_rdev));
+	else if (e->display->dev == 1)
+		ft_printf("%*lld ", e->display->siz + 4, info_file.st_size);
+	else
+		ft_printf("%*lld ", e->display->siz, info_file.st_size);
 }
 

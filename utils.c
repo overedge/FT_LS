@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 01:16:15 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 22:19:45 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,14 @@ unsigned long len_nbr(unsigned long nbr)
 		i++;
 	}
 	return (i);
+}
+
+char *path(char *str)
+{
+	int		score;
+
+	score = count_slash(str);
+	if (score > 0)
+		str = ft_strsplit(str, '/')[1];
+	return (str);
 }

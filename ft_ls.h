@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 01:15:36 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 22:19:37 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_display
 	unsigned long siz;
 	unsigned long grs;
 	unsigned long own;
+	char dev;
 }				t_display;
 
 typedef struct s_env
@@ -84,6 +85,9 @@ void	add_link(char *str, t_file **file);
 void	print_list(t_file **list, t_env *e);
 void	del_list(t_file **list);
 unsigned long len_nbr(unsigned long nbr);
+int		list_len(t_file **list);
+int		count_slash(char *str);
+char	*path(char *str);
 /*
 ** Sort
 */

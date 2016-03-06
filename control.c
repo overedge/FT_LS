@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 00:46:31 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 23:06:27 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 
 	tmp = *dir;
 	exep_file(e, file);
-	if (tmp)
+	if (tmp && list_len(dir) > 1)
+	{
 		sort_list(dir, e);
+		if (e->overload == 0)
+			e->overload = 2;
+	}
 	while (tmp)
 	{
 		if (e->overload == 1)
 			ft_printf("\n%s:\n", tmp->str);
+		else if (e->overload == 2)
+			ft_printf("%s:\n", tmp->str);
 		e->overload = 1;
 		if ((directory = opendir(tmp->str)) == NULL)
 		{

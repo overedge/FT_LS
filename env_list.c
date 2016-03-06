@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 01:11:23 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 20:06:21 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void construct_display(t_display *display)
 	display->siz = 0;
 	display->grs = 0;
 	display->own = 0;
+	display->dev = 0;
 }
 
 static int size_env(struct stat info, t_env *e)
@@ -41,6 +42,8 @@ static int size_env(struct stat info, t_env *e)
 	info.st_size > e->display->siz ? e->display->siz = info.st_size : 0;
 	ft_strlen(group->gr_name) > e->display->grs ? e->display->grs = ft_strlen(group->gr_name) : 0;
 	ft_strlen(user->pw_name) > e->display->own ? e->display->own = ft_strlen(user->pw_name) : 0;
+	S_ISCHR(info.st_mode & S_IFMT) ? e->display->dev = 1 : 0;
+	S_ISBLK(info.st_mode & S_IFMT) ? e->display->dev = 1 : 0;
 	return (0);
 }
 

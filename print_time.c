@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 22:19:40 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 01:15:13 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/06 21:37:06 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,11 @@ void	print_time(struct stat info_file)
 		ft_printf("%-s ", hour[1]);
 	}
 	else
-		ft_printf("%5s ", ft_strsplit(date[4], '\n')[0]);
+	{
+		str = ft_strsplit(date[4], '\n')[0];
+		if (ft_strlen(str) == 4)
+			ft_printf("%5s ", str);
+		else
+			ft_printf("%6s ", str);
+	}
 }
