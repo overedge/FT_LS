@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 20:06:21 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/07 22:42:18 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void env_list(t_file **list, t_env *e)
 	e->display = display;
 	while (tmp)
 	{
-		if (lstat(tmp->str, &info) != 0)
+		if (lstat(tmp->total, &info) != 0)
 			error_dir(tmp->str, e);
 		tmp->timer = info.st_mtime;
 		if (e->f_a == 0 && tmp->str[0] == '.')

@@ -21,5 +21,5 @@ void print_user(struct stat info_file, t_env *e)
 		perror("");
 		return;
 	}
-	ft_printf("%-*s  ", e->display->own ,user->pw_name);
+	ft_printf("%-*s  ", e->display->own , user->pw_name);
 }

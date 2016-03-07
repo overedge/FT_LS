@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 22:19:45 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/07 22:29:16 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ void	error_dir(char *dirpath, t_env *e)
 	e->error = 1;
 }
 
-void	add_link(char *path, t_file **file)
+void	add_link(char *name, char *path, t_file **file)
 {
 	t_file *tmp;
 	t_file *new;
 
 	tmp = *file;
 	new = (t_file*)malloc(sizeof(t_file));
-	new->str = ft_strdup(path);
+	new->str = ft_strdup(name);
+	new->path = ft_strdup(path);
+	new->total  = ft_strjoin(path, "/");
+	new->total = ft_strjoin(new->total, name);
 	new->next = NULL;
 	if (!tmp)
 	{
@@ -53,7 +56,7 @@ void	print_list(t_file **list, t_env *e)
 		else
 		{
 			if (e->f_l == 1 || e->f_c == 1 || e->f_e == 1)
-				lstat(tmp->str, &info_file);
+				lstat(tmp->total, &info_file);
 			if (e->f_l == 1)
 			{
 				print_mode(info_file);
@@ -63,7 +66,7 @@ void	print_list(t_file **list, t_env *e)
 				print_size(info_file, e);
 				print_time(info_file);
 			}
-		print_path(tmp->str, info_file, e);
+		print_path(tmp, info_file, e);
 		tmp = tmp->next;
 		}
 	}
@@ -98,12 +101,3 @@ unsigned long len_nbr(unsigned long nbr)
 	return (i);
 }
 
-char *path(char *str)
-{
-	int		score;
-
-	score = count_slash(str);
-	if (score > 0)
-		str = ft_strsplit(str, '/')[1];
-	return (str);
-}

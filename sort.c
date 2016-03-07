@@ -6,18 +6,18 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 05:22:55 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 00:01:07 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/08 00:33:02 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void swap(t_file **swap, t_file **swap2)
+static void			swap(t_file **swap, t_file **swap2)
 {
-	t_file	*swp;
-	t_file	*swp2;
-	char	*tmp;
-	time_t  tmptime;
+	t_file		*swp;
+	t_file		*swp2;
+	char		*tmp;
+	time_t		tmptime;
 
 	swp = *swap;
 	swp2 = *swap2;
@@ -27,9 +27,15 @@ static void swap(t_file **swap, t_file **swap2)
 	tmptime = swp->timer;
 	swp->timer = swp2->timer;
 	swp2->timer = tmptime;
+	tmp = swp->path;
+	swp->path = swp2->path;
+	swp2->path = tmp;
+	tmp = swp->total;
+	swp->total = swp2->total;
+	swp2->total = tmp;
 }
 
-static void sort_str(t_file **list, t_env *e)
+static void			sort_str(t_file **list, t_env *e)
 {
 	t_file *tmp;
 	t_file *tmp2;
@@ -53,7 +59,7 @@ static void sort_str(t_file **list, t_env *e)
 	}
 }
 
-static void sort_time(t_file **list, t_env *e)
+static void			sort_time(t_file **list, t_env *e)
 {
 	t_file *tmp;
 	t_file *tmp2;
@@ -76,7 +82,7 @@ static void sort_time(t_file **list, t_env *e)
 	}
 }
 
-void sort_list(t_file **list, t_env *e)
+void				sort_list(t_file **list, t_env *e)
 {
 	if (e->f_t == 1)
 	{

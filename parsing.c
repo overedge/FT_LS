@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/06 20:37:24 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/08 00:41:20 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		on_off(char *str, t_env *e)
 	while (str[i] != '\0')
 	{
 		if (str[i] == 'R')
-			e->f_R = TRUE;
+			e->f_rec = TRUE;
 		else if (str[i] == 'r')
 			e->f_r = TRUE;
 		else if (str[i] == 'l')

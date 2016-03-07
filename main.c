@@ -6,15 +6,15 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/05 15:30:36 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/08 00:41:02 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void debug(t_env *e)
+static void		debug(t_env *e)
 {
-	if (e->f_R == TRUE)
+	if (e->f_rec == TRUE)
 		ft_printf("Flags '-R' Actived\n");
 	if (e->f_r == TRUE)
 		ft_printf("Flags '-r' Actived\n");
@@ -35,9 +35,9 @@ static void debug(t_env *e)
 	}
 }
 
-static void constructor(t_env *e, int argc, char **argv)
+static void		constructor(t_env *e, int argc, char **argv)
 {
-	e->f_R = FALSE;
+	e->f_rec = FALSE;
 	e->f_l = FALSE;
 	e->f_t = FALSE;
 	e->f_r = FALSE;
@@ -49,12 +49,14 @@ static void constructor(t_env *e, int argc, char **argv)
 	e->i = FALSE;
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
-	t_env e;
-	t_file *file = NULL;
-	t_file *dir = NULL;
-	
+	t_env	e;
+	t_file	*file;
+	t_file	*dir;
+
+	file = NULL;
+	dir = NULL;
 	e.argc = argc;
 	e.argv = argv;
 	constructor(&e, argc, argv);

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_link.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/08 00:26:31 by nahmed-m          #+#    #+#             */
+/*   Updated: 2016/03/08 00:26:40 by nahmed-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
-void print_link(struct stat info_file, t_env *e)
+void	print_link(struct stat info_file, t_env *e)
 {
 	ft_printf("%*d ", e->display->lnk + 2, info_file.st_nlink);
 }
