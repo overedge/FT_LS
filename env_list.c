@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/07 22:42:18 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/08 01:32:08 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ static int size_env(struct stat info, t_env *e)
 	e->display->nb_block += info.st_blocks;
 	info.st_nlink > e->display->lnk ? e->display->lnk = info.st_nlink : 0;
 	info.st_size > e->display->siz ? e->display->siz = info.st_size : 0;
-	ft_strlen(group->gr_name) > e->display->grs ? e->display->grs = ft_strlen(group->gr_name) : 0;
-	ft_strlen(user->pw_name) > e->display->own ? e->display->own = ft_strlen(user->pw_name) : 0;
+	ft_strlen(group->gr_name) > e->display->grs ? e->display->grs = \
+	ft_strlen(group->gr_name) : 0;
+	ft_strlen(user->pw_name) > e->display->own ? e->display->own = \
+	ft_strlen(user->pw_name) : 0;
 	S_ISCHR(info.st_mode & S_IFMT) ? e->display->dev = 1 : 0;
 	S_ISBLK(info.st_mode & S_IFMT) ? e->display->dev = 1 : 0;
 	return (0);

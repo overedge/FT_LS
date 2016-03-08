@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/07 20:12:57 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/08 01:54:03 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 	t_file			*tmp;
 	DIR				*directory;
 	struct dirent	*dir_info;
+	struct stat		info_file;
 
 	tmp = *dir;
 	exep_file(e, file);
@@ -54,7 +55,18 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 			return ;
 		}
 		while ((dir_info = readdir(directory)) != NULL)
+		{
 			add_link(dir_info->d_name, tmp->str, file);
+			if (e->f_rec == 1)
+			{
+				if (dir_info->d_name[0] != '.')
+				{
+					lstat(dir_info->d_name, &info_file);
+					if (S_ISDIR(info_file.st_mode & S_IFMT))
+						add_link(dir_info->d_name, "", dir);
+				}
+			}
+		}
 		env_list(file, e);
 		sort_list(file, e);
 		print_list(file, e);
