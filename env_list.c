@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/08 01:32:08 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 00:53:12 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void env_list(t_file **list, t_env *e)
 		if (lstat(tmp->total, &info) != 0)
 			error_dir(tmp->str, e);
 		tmp->timer = info.st_mtime;
-		if (e->f_a == 0 && tmp->str[0] == '.')
+		if (e->f_a == 0 && good_file(tmp->str))
 			;
 		else
 		{

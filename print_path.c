@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 14:38:15 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/08 00:36:06 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 01:31:59 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static void		path_link(t_file *tmp, struct stat infos_file, t_env *e)
 
 	linkname = (char *)malloc(sizeof(infos_file.st_size + 10));
 	if (readlink(tmp->total, linkname, infos_file.st_size + 10) == -1)
+	{
 		error_dir(tmp->str, e);
+		exit(EXIT_FAILURE);
+	}
 	else
 	{
 		if (e->f_c == 1)
@@ -28,7 +31,8 @@ static void		path_link(t_file *tmp, struct stat infos_file, t_env *e)
 		if (e->f_e == 1)
 			ft_printf(" 🚩");
 	}
-	free(linkname);
+	if (linkname)
+		free(linkname);
 }
 
 static void		print_emoji(struct stat infos_file)

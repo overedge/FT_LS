@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/07 22:29:16 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 01:42:49 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	error_dir(char *dirpath, t_env *e)
 {
+	ft_putstr("ls: ");
 	perror(dirpath);
 	e->error = 1;
 }
@@ -27,8 +28,13 @@ void	add_link(char *name, char *path, t_file **file)
 	new = (t_file*)malloc(sizeof(t_file));
 	new->str = ft_strdup(name);
 	new->path = ft_strdup(path);
-	new->total  = ft_strjoin(path, "/");
-	new->total = ft_strjoin(new->total, name);
+	if (ft_strcmp("", path) == 0)
+		new->total = new->str;
+	else
+	{
+		new->total  = ft_strjoin(path, "/");
+		new->total = ft_strjoin(new->total, name);
+	}
 	new->next = NULL;
 	if (!tmp)
 	{
@@ -47,11 +53,11 @@ void	print_list(t_file **list, t_env *e)
 	char		*test;
 
 	tmp = *list;
-	if (tmp && e->f_l == 1 && e->overload == 1)
+	if (tmp && e->f_l == 1 && e->overload == 1 && list_len(list) != 2)
 		ft_printf("total %ld\n", e->display->nb_block);
 	while (tmp)
 	{
-		if (e->f_a == 0 && tmp->str[0] == '.')
+		if (e->f_a == 0 && good_file(tmp->str))
 			tmp = tmp->next;
 		else
 		{

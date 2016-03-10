@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/08 01:54:03 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 01:41:38 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,22 @@ static void exep_file(t_env *e, t_file **file)
 	}
 }
 
+static void overload(t_env *e, char *str)
+{
+	if (e->overload == 1)
+		ft_printf("\n%s:\n", str);
+	else if (e->overload == 2)
+		ft_printf("%s:\n", str);
+	e->overload = 1;
+}
+
 void	controler(t_env *e, t_file **file, t_file **dir)
 {
 	t_file			*tmp;
 	DIR				*directory;
 	struct dirent	*dir_info;
 	struct stat		info_file;
+	char			*recur;
 
 	tmp = *dir;
 	exep_file(e, file);
@@ -44,11 +54,7 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 	}
 	while (tmp)
 	{
-		if (e->overload == 1)
-			ft_printf("\n%s:\n", tmp->str);
-		else if (e->overload == 2)
-			ft_printf("%s:\n", tmp->str);
-		e->overload = 1;
+		overload(e, tmp->str);
 		if ((directory = opendir(tmp->str)) == NULL)
 		{
 			error_dir(tmp->str, e);
@@ -59,11 +65,13 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 			add_link(dir_info->d_name, tmp->str, file);
 			if (e->f_rec == 1)
 			{
-				if (dir_info->d_name[0] != '.')
+				if (!good_file(dir_info->d_name))
 				{
-					lstat(dir_info->d_name, &info_file);
+					recur = ft_strjoin(ft_strjoin(tmp->str, "/"), dir_info->d_name);
+					if (lstat(recur, &info_file) == -1)
+						perror("");
 					if (S_ISDIR(info_file.st_mode & S_IFMT))
-						add_link(dir_info->d_name, "", dir);
+						add_link(recur, "", dir);
 				}
 			}
 		}
@@ -71,6 +79,7 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 		sort_list(file, e);
 		print_list(file, e);
 		del_list(file);
+		del_list(dir);
 		tmp = tmp->next;
 	}
 }

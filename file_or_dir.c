@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 00:38:51 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/07 23:00:22 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/09 20:07:02 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ void detect_dir(t_env *e, char *path, t_file **file, t_file **dir)
 		if ((file_info.st_mode & S_IFMT) == S_IFDIR)
 			add_link(path, "", dir);
 		else
-			add_link(path, ".", file);
+			add_link(path, "", file);
 	}
 	else
+	{
 		error_dir(path, e);
+		e->overload = 2;
+	}
 }
 
 

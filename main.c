@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/08 00:41:02 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 01:38:30 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,31 @@ static void		constructor(t_env *e, int argc, char **argv)
 	e->overload = FALSE;
 	e->i = FALSE;
 }
+	
+static void		sort_argv(t_env *e)
+{
+	int		save;
+	char	*swap;
+
+	save = e->i;
+	if (e->i == 0)
+		return ;
+	else
+	{
+		while(save + 1 < e->argc)
+		{
+			if (ft_strcmp(e->argv[save], e->argv[save + 1]) > 0)
+			{
+				swap = e->argv[save];
+				e->argv[save] = e->argv[save + 1];
+				e->argv[save + 1] = swap;
+				save = e->i;
+			}
+			else
+				save += 1;
+		}
+	}
+}
 
 int				main(int argc, char **argv)
 {
@@ -63,6 +88,7 @@ int				main(int argc, char **argv)
 	if (argc > 1)
 		parse_arg(argc, argv, &e);
 //	debug(&e);
+	sort_argv(&e);
 	file_or_dir(&e, &file, &dir);
 	controler(&e, &file, &dir);
 	return (e.error);
