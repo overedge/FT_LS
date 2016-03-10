@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 02:43:14 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 00:36:52 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,15 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 			return ;
 		}
 		while ((dir_info = readdir(directory)) != NULL)
-		{
 			add_link(dir_info->d_name, tmp->str, file);
-			if (e->f_rec == 1)
-			{
-				if (!good_file(dir_info->d_name))
-				{
-					recur = ft_strjoin(ft_strjoin(tmp->str, "/"), dir_info->d_name);
-					if (lstat(recur, &info_file) == -1)
-						perror("");
-					if (S_ISDIR(info_file.st_mode & S_IFMT))
-						add_link(recur, "", dir);
-				}
-			}
-		}
 		env_list(file, e);
 		sort_list(file, e);
 		print_list(file, e);
+		if (e->f_rec == 1 && recur_list(file, dir, e) == 1)
+			tmp = *dir;
+		else
+			tmp = tmp->next;
 		del_list(file);
-		tmp = tmp->next;
 	}
 	del_list(dir);
 }

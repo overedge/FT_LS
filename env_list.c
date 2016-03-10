@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 18:46:07 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 22:52:16 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static int size_env(struct stat info, t_env *e)
 
 void env_list(t_file **list, t_env *e)
 {
-	t_file *tmp;
+	t_file		*tmp;
 	struct stat info;
-	t_display *display;
+	t_display	*display;
 
 	tmp = *list;
 	display = malloc(sizeof(t_display));
@@ -64,7 +64,6 @@ void env_list(t_file **list, t_env *e)
 		if (lstat(tmp->total, &info) != 0)
 			error_dir(tmp->str, e);
 		tmp->timer = info.st_mtime;
-		tmp->nano = info.st_mtimespec.tv_nsec;
 		if (e->f_a == 0 && good_file(tmp->str))
 			;
 		else

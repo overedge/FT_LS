@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 18:40:53 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 00:29:41 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_file
 	char			*path;
 	char			*total;
 	time_t			timer;
-	long			nano;
+	long int		nano;
 	struct s_file	*next;
 }				t_file;
 
@@ -111,4 +111,9 @@ void			controler(t_env *e, t_file **file, t_file **dir);
 ** Env List
 */
 void			env_list(t_file **list, t_env *e);
+
+/*
+** Recur List
+*/
+int			recur_list(t_file **list, t_file **dir, t_env *e);
 #endif

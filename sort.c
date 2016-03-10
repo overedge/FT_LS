@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 05:22:55 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 18:57:17 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 21:11:28 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,31 @@ static void			sort_str(t_file **list, t_env *e)
 	}
 }
 
-static void			sort_nano(t_file **tmp, t_file **tmp2, t_env *e)
+static void			sort_nano(t_file **list, t_env *e)
 {
-	t_file *val;
-	t_file *val2;
+	t_file *tmp;
+	t_file *tmp2;
 
-	val = *tmp;
-	val2 = *tmp2;
-	if (e->f_r == 0 ? val->nano < val2->nano : val->nano > val2->nano)
-		swap(&val, &val2);
+	tmp = *list;
+	tmp2 = tmp->next;
+	while (tmp2)
+	{
+		if (tmp->timer == tmp2->timer)
+		{
+			ft_printf("%ld %ld\n", tmp->nano, tmp2->nano);
+			if (tmp->nano < tmp2->nano)
+			{
+				swap(&tmp, &tmp2);
+				tmp = *list,
+				tmp2 = tmp->next;
+			}
+		}
+		else
+		{
+			tmp = tmp->next;
+			tmp2 = tmp->next;
+		}
+	}
 }
 
 static void			sort_time(t_file **list, t_env *e)
@@ -89,12 +105,6 @@ static void			sort_time(t_file **list, t_env *e)
 			tmp = *list;
 			tmp2 = tmp->next;
 		}
-		if (tmp->timer == tmp2->timer)
-		{
-			sort_nano(&tmp, &tmp2, e);
-			tmp = *list;
-			tmp2 = tmp->next;
-		}
 		else
 		{
 			tmp = tmp->next;
@@ -109,6 +119,7 @@ void				sort_list(t_file **list, t_env *e)
 	{
 		sort_str(list, e);
 		sort_time(list, e);
+	//	sort_nano(list, e);
 	}
 	else
 		sort_str(list, e);

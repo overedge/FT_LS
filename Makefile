@@ -6,11 +6,11 @@
 #    By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/03 19:34:07 by nahmed-m          #+#    #+#              #
-#*   Updated: 2016/03/06 20:55:32 by nahmed-m         ###   ########.fr       *#
+#*   Updated: 2016/03/10 22:53:34 by nahmed-m         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c parsing.c control.c utils.c print_mode.c print_link.c print_usr_grp.c print_size.c print_time.c sort.c file_or_dir.c print_path.c env_list.c utils2.c
+SRC_NAME = main.c parsing.c control.c utils.c print_mode.c print_link.c print_usr_grp.c print_size.c print_time.c sort.c file_or_dir.c print_path.c env_list.c utils2.c recursive.c
 
 NAME = ft_ls
 
