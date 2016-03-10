@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/09 18:27:31 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 18:40:53 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_display
 {
 	unsigned long	nb_block;
 	int				lnk;
-	unsigned long	siz;
+	long long		siz;
 	unsigned long	grs;
 	unsigned long	own;
 	char			dev;
@@ -61,6 +61,7 @@ typedef struct	s_file
 	char			*path;
 	char			*total;
 	time_t			timer;
+	long			nano;
 	struct s_file	*next;
 }				t_file;
 

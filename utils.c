@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 01:42:49 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/10 17:06:15 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	print_list(t_file **list, t_env *e)
 {
 	t_file *tmp;
 	struct stat info_file;
-	char		*test;
 
 	tmp = *list;
 	if (tmp && e->f_l == 1 && e->overload == 1 && list_len(list) != 2)
