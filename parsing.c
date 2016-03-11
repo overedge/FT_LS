@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/08 00:41:20 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 17:37:51 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ static void		on_off(char *str, t_env *e)
 	}
 }
 
+static int		count_t(char *str)
+{
+	int		score;
+	int		i;
+
+	score = ft_strlen(str);
+	i = 0;
+
+	while (str[i])
+	{
+		
+		i++;
+	}
+
+}
+
 void			parse_arg(int argc, char **argv, t_env *e)
 {
 	int		i;
@@ -44,7 +60,7 @@ void			parse_arg(int argc, char **argv, t_env *e)
 	i = 1;
 	while (i < argc)
 	{
-		if (argv[i][0] == '-' && ft_strlen(argv[i]) != 1)
+		if (argv[i][0] == '-' && ft_strlen(argv[i]) != 1 && count_t(argv[i]) != 1)
 			on_off(argv[i], e);
 		else
 		{
