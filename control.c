@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 00:36:52 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 01:06:20 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 	t_file			*tmp;
 	DIR				*directory;
 	struct dirent	*dir_info;
-	struct stat		info_file;
-	char			*recur;
 
 	tmp = *dir;
 	exep_file(e, file);

@@ -6,13 +6,13 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 14:38:15 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 21:30:16 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 01:08:17 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void		path_link(t_file *tmp, struct stat infos_file, t_env *e)
+static void		path_link(t_file *tmp, t_env *e)
 {
 	char *linkname;
 
@@ -55,7 +55,7 @@ static void		print_emoji(struct stat infos_file)
 void			print_path(t_file *tmp, struct stat infos_file, t_env *e)
 {
 	if (e->f_l == 1 && S_ISLNK(infos_file.st_mode & S_IFMT))
-		path_link(tmp, infos_file, e);
+		path_link(tmp, e);
 	else
 	{
 		if (e->f_c == 1 && S_ISDIR(infos_file.st_mode & S_IFMT))

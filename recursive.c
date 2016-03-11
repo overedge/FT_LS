@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 22:53:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 00:40:08 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 01:01:39 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		recur_list(t_file **file, t_file **dir, t_env *e)
 			if (lstat(tmp->total, &info_file) == -1)
 				error_dir(tmp->str, e);
 			if (S_ISDIR(info_file.st_mode & S_IFMT))
-				add_link(tmp->str, tmp->path, &dirtmp);
+				add_link(tmp->total, ".", &dirtmp);
 		}
 		tmp = tmp->next;
 	}
