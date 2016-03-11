@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 16:52:57 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 22:14:55 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	add_link(char *name, char *path, t_file **file)
 	new->path = ft_strdup(path);
 	if (ft_strcmp("", path) == 0)
 		new->total = new->str;
+	else if (ft_strcmp("/", path) == 0)
+		new->total = ft_strjoin(path, name);
 	else
 	{
 		new->total  = ft_strjoin(path, "/");
