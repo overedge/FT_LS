@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 00:29:41 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:50:04 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void			print_list(t_file **list, t_env *e);
 void			del_list(t_file **list);
 unsigned long	len_nbr(unsigned long nbr);
 int				list_len(t_file **list);
-int				good_file(char *str);
+int				good_file(char *str, t_env *e);
 /*
 ** Sort
 */

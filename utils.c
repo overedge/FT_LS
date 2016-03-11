@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 17:06:15 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:52:57 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_dir(char *dirpath, t_env *e)
 {
-	ft_putstr("ls: ");
+	ft_putstr_fd("ls: ", 2);
 	perror(dirpath);
 	e->error = 1;
 }
@@ -56,7 +56,7 @@ void	print_list(t_file **list, t_env *e)
 		ft_printf("total %ld\n", e->display->nb_block);
 	while (tmp)
 	{
-		if (e->f_a == 0 && good_file(tmp->str))
+		if (e->f_a == 0 && good_file(tmp->str, e))
 			tmp = tmp->next;
 		else
 		{

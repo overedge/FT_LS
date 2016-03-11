@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 22:52:16 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:53:38 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void env_list(t_file **list, t_env *e)
 		if (lstat(tmp->total, &info) != 0)
 			error_dir(tmp->str, e);
 		tmp->timer = info.st_mtime;
-		if (e->f_a == 0 && good_file(tmp->str))
+		tmp->nano = info.st_mtimespec.tv_nsec;
+		if (e->f_a == 0 && good_file(tmp->str, e))
 			;
 		else
 		{

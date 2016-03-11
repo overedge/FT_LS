@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 01:06:20 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:42:30 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void overload(t_env *e, char *str)
 void	controler(t_env *e, t_file **file, t_file **dir)
 {
 	t_file			*tmp;
+	t_file			*tmp2;
 	DIR				*directory;
 	struct dirent	*dir_info;
 
@@ -53,21 +54,27 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 	while (tmp)
 	{
 		overload(e, tmp->str);
-		if ((directory = opendir(tmp->str)) == NULL)
+		if ((directory = opendir(tmp->str)) != NULL)
 		{
-			error_dir(tmp->str, e);
-			return ;
+			while ((dir_info = readdir(directory)) != NULL)
+				add_link(dir_info->d_name, tmp->str, file);
+			closedir(directory);
+			env_list(file, e);
+			sort_list(file, e);
+			print_list(file, e);
+			if (e->f_rec == 1 && recur_list(file, dir, e) == 1)
+				tmp = *dir;
+			else
+			{
+				tmp2 = tmp;
+				tmp = tmp->next;
+				free(tmp2);
+				*dir = tmp;
+			}
+			del_list(file);
 		}
-		while ((dir_info = readdir(directory)) != NULL)
-			add_link(dir_info->d_name, tmp->str, file);
-		env_list(file, e);
-		sort_list(file, e);
-		print_list(file, e);
-		if (e->f_rec == 1 && recur_list(file, dir, e) == 1)
-			tmp = *dir;
 		else
-			tmp = tmp->next;
-		del_list(file);
+			error_dir(tmp->str, e), tmp = tmp->next;
 	}
 	del_list(dir);
 }
