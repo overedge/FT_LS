@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 22:14:55 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 17:50:11 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	print_list(t_file **list, t_env *e)
 	struct stat info_file;
 
 	tmp = *list;
-	if (tmp && e->f_l == 1 && e->overload == 1 && list_len(list) != 2)
+	if (tmp && e->f_l == 1 && e->overload == 1 && (list_len(list) != 2 || (e->f_rec == 1 && e->display->nb_block != 0)))
 		ft_printf("total %ld\n", e->display->nb_block);
 	while (tmp)
 	{

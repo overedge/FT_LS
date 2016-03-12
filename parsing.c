@@ -6,11 +6,19 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 15:09:12 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 18:05:20 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+static void ft_exep(char c, t_env *e)
+{
+	ft_printf("ls: illegal option -- %c\n", c);
+	ft_printf("usage: ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]\n");
+	e->exep = TRUE;
+	e->error = TRUE;
+}
 
 static void		on_off(char *str, t_env *e)
 {
@@ -33,6 +41,8 @@ static void		on_off(char *str, t_env *e)
 			e->f_e = TRUE;
 		else if (str[i] == 'c')
 			e->f_c = TRUE;
+		else
+			ft_exep(str[i], e);
 		i++;
 	}
 }
@@ -64,15 +74,12 @@ void			parse_arg(int argc, char **argv, t_env *e)
 		if (ft_strlen(argv[i]) == 2 && argv[i][0] == '-' && argv[i][1] == '-')
 		{
 			if (argc - i > 1)
-			{
 				e->i = i + 1;
-				return ;
-			}
+			else if (argc - i == 1)
+				e->i = 0;
 			else
-			{
 				e->exep = 1;
-				return ;
-			}
+			return ;
 		}
 		else if (argv[i][0] == '-' && ft_strlen(argv[i]) != 1 && count_t(argv[i]) < ft_strlen(argv[i]))
 			on_off(argv[i], e);

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:31:49 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 15:09:01 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 17:52:07 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int				main(int argc, char **argv)
 	if (argc > 1)
 		parse_arg(argc, argv, &e);
 	if (e.exep == 1)
-		return (1);
+		return (e.error);
 //	debug(&e);
 	sort_argv(&e);
 	file_or_dir(&e, &file, &dir);
