@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 16:50:04 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 15:07:59 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct	s_env
 	char		f_a;
 	char		f_e;
 	char		f_c;
+	char		exep;
 	int			argc;
 	char		**argv;
 	int			i;

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 19:55:11 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 15:09:12 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,19 @@ void			parse_arg(int argc, char **argv, t_env *e)
 	i = 1;
 	while (i < argc)
 	{
-		if (i == 1 && ft_strlen(argv[1]) == 2 && argv[1][0] == '-' && argv[1][1] == '-')
-			;
+		if (ft_strlen(argv[i]) == 2 && argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			if (argc - i > 1)
+			{
+				e->i = i + 1;
+				return ;
+			}
+			else
+			{
+				e->exep = 1;
+				return ;
+			}
+		}
 		else if (argv[i][0] == '-' && ft_strlen(argv[i]) != 1 && count_t(argv[i]) < ft_strlen(argv[i]))
 			on_off(argv[i], e);
 		else
