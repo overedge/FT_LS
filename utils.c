@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 17:50:11 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 23:40:34 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 void	error_dir(char *dirpath, t_env *e)
 {
+	char	c;
+
+	c = FALSE;
+	if (ft_strlen(dirpath) == 0)
+	{
+		dirpath = "fts_open";
+		c = TRUE;
+	}
 	ft_putstr_fd("ls: ", 2);
 	perror(dirpath);
 	e->error = 1;
+	if (c == TRUE)
+		exit(EXIT_FAILURE);
 }
 
 void	add_link(char *name, char *path, t_file **file)
@@ -54,7 +64,7 @@ void	print_list(t_file **list, t_env *e)
 	struct stat info_file;
 
 	tmp = *list;
-	if (tmp && e->f_l == 1 && e->overload == 1 && (list_len(list) != 2 || (e->f_rec == 1 && e->display->nb_block != 0)))
+	if (tmp && e->f_l == 1 && e->overload == 1 && (list_len(list) != 2 || (e->f_rec == 1 && e->f_a == 1)))
 		ft_printf("total %ld\n", e->display->nb_block);
 	while (tmp)
 	{

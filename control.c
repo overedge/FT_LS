@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 03:43:41 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 16:42:30 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/12 22:30:41 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,13 @@ void	controler(t_env *e, t_file **file, t_file **dir)
 			del_list(file);
 		}
 		else
-			error_dir(tmp->str, e), tmp = tmp->next;
+		{
+			error_dir(tmp->str, e);
+			tmp2 = tmp;
+			tmp = tmp->next;
+			free(tmp2);
+			*dir = tmp;
+		}
 	}
 	del_list(dir);
 }
