@@ -6,13 +6,13 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 23:40:34 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 02:01:52 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	error_dir(char *dirpath, t_env *e)
+void			error_dir(char *dirpath, t_env *e)
 {
 	char	c;
 
@@ -29,7 +29,7 @@ void	error_dir(char *dirpath, t_env *e)
 		exit(EXIT_FAILURE);
 }
 
-void	add_link(char *name, char *path, t_file **file)
+void			add_link(char *name, char *path, t_file **file)
 {
 	t_file *tmp;
 	t_file *new;
@@ -44,7 +44,7 @@ void	add_link(char *name, char *path, t_file **file)
 		new->total = ft_strjoin(path, name);
 	else
 	{
-		new->total  = ft_strjoin(path, "/");
+		new->total = ft_strjoin(path, "/");
 		new->total = ft_strjoin(new->total, name);
 	}
 	new->next = NULL;
@@ -58,9 +58,9 @@ void	add_link(char *name, char *path, t_file **file)
 	tmp->next = new;
 }
 
-void	print_list(t_file **list, t_env *e)
+void			print_list(t_file **list, t_env *e)
 {
-	t_file *tmp;
+	t_file		*tmp;
 	struct stat info_file;
 
 	tmp = *list;
@@ -75,21 +75,14 @@ void	print_list(t_file **list, t_env *e)
 			if (e->f_l == 1 || e->f_c == 1 || e->f_e == 1)
 				lstat(tmp->total, &info_file);
 			if (e->f_l == 1)
-			{
-				print_mode(info_file);
-				print_link(info_file, e);
-				print_user(info_file, e);
-				print_group(info_file, e);
-				print_size(info_file, e);
-				print_time(info_file);
-			}
+				proces_list(info_file, e);
 		print_path(tmp, info_file, e);
 		tmp = tmp->next;
 		}
 	}
 }
 
-void	del_list(t_file **list)
+void			del_list(t_file **list)
 {
 	t_file *tmp;
 
@@ -105,7 +98,7 @@ void	del_list(t_file **list)
 	list = NULL;
 }
 
-unsigned long len_nbr(unsigned long nbr)
+unsigned long	len_nbr(unsigned long nbr)
 {
 	int		i;
 
@@ -117,4 +110,3 @@ unsigned long len_nbr(unsigned long nbr)
 	}
 	return (i);
 }
-

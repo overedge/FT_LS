@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 05:22:55 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 13:35:38 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 01:06:15 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void			sort_nano(t_file **list, t_env *e)
 			if (e->f_r == 0 ? tmp->nano < tmp2->nano : tmp->nano > tmp2->nano)
 			{
 				swap(&tmp, &tmp2);
-				tmp = *list,
+				tmp = *list;
 				tmp2 = tmp->next;
 			}
 			else

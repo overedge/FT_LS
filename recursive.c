@@ -6,13 +6,13 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 22:53:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 16:53:49 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 01:04:12 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void merge_list(t_file **dir, t_file **dirnew)
+static int		merge_list(t_file **dir, t_file **dirnew)
 {
 	t_file *tmp;
 	t_file *tmp2;
@@ -28,15 +28,17 @@ static void merge_list(t_file **dir, t_file **dirnew)
 		tmp = tmp->next;
 	tmp->next = *dir;
 	*dir = *dirnew;
+	return (1);
 }
 
-int		recur_list(t_file **file, t_file **dir, t_env *e)
+int				recur_list(t_file **file, t_file **dir, t_env *e)
 {
 	t_file		*tmp;
 	t_file		*tmp2;
 	struct stat info_file;
-	t_file		*dirtmp = NULL;
+	t_file		*dirtmp;
 
+	dirtmp = NULL;
 	tmp = *file;
 	tmp2 = *dir;
 	while (tmp)
@@ -51,10 +53,7 @@ int		recur_list(t_file **file, t_file **dir, t_env *e)
 		tmp = tmp->next;
 	}
 	if (dirtmp)
-	{
-		merge_list(dir, &dirtmp);
-		return (1);
-	}
+		return (merge_list(dir, &dirtmp));
 	else
 		return (0);
 }

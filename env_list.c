@@ -6,13 +6,13 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/11 16:53:38 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 01:18:49 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void construct_display(t_display *display)
+static void		construct_display(t_display *display)
 {
 	display->nb_block = 0;
 	display->lnk = 0;
@@ -22,10 +22,10 @@ static void construct_display(t_display *display)
 	display->dev = 0;
 }
 
-static int size_env(struct stat info, t_env *e)
+static int		size_env(struct stat info, t_env *e)
 {
-	struct group *group;
-	struct passwd *user;
+	struct group	*group;
+	struct passwd	*user;
 
 	if ((group = getgrgid(info.st_gid)) == NULL)
 	{
@@ -49,11 +49,11 @@ static int size_env(struct stat info, t_env *e)
 	return (0);
 }
 
-void env_list(t_file **list, t_env *e)
+void			env_list(t_file **list, t_env *e)
 {
-	t_file		*tmp;
-	struct stat info;
-	t_display	*display;
+	t_file			*tmp;
+	struct stat		info;
+	t_display		*display;
 
 	tmp = *list;
 	display = malloc(sizeof(t_display));

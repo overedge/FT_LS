@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 14:38:15 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 20:08:07 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 01:19:58 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		path_link(t_file *tmp, t_env *e)
 	char *linkname;
 
 	linkname = (char *)ft_memalloc(1025);
-	if (readlink(tmp->total, linkname, 1024 ) == -1)
+	if (readlink(tmp->total, linkname, 1024) == -1)
 	{
 		error_dir(tmp->str, e);
 		exit(EXIT_FAILURE);

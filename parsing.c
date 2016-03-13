@@ -6,13 +6,13 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 19:42:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 23:27:54 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 02:06:39 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static int ft_exep(char c, t_env *e)
+static int				ft_exep(char c, t_env *e)
 {
 	ft_putstr_fd("ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
@@ -24,44 +24,41 @@ static int ft_exep(char c, t_env *e)
 	return (1);
 }
 
-static int		on_off(char *str, t_env *e)
+static int				on_off(char *str, t_env *e)
 {
-	int		i;
-
-	i = 1;
-	while (str[i] != '\0')
+	str++;
+	while (*str != '\0')
 	{
-		if (str[i] == 'R')
+		if (*str == 'R')
 			e->f_rec = TRUE;
-		else if (str[i] == 'r')
+		else if (*str == 'r')
 			e->f_r = TRUE;
-		else if (str[i] == 'l')
+		else if (*str == 'l')
 			e->f_l = TRUE;
-		else if (str[i] == 't')
+		else if (*str == 't')
 			e->f_t = TRUE;
-		else if (str[i] == 'a')
+		else if (*str == 'a')
 			e->f_a = TRUE;
-		else if (str[i] == 'e')
+		else if (*str == 'e')
 			e->f_e = TRUE;
-		else if (str[i] == 'c')
+		else if (*str == 'c')
 			e->f_c = TRUE;
-		else if (str[i] == '1')
+		else if (*str == '1')
 			;
 		else
-			return (ft_exep(str[i], e));
-		i++;
+			return (ft_exep(*str, e));
+		str++;
 	}
 	return (0);
 }
 
-static size_t		count_t(char *str)
+static size_t			count_t(char *str)
 {
 	int		i;
 	size_t	score_t;
 
 	i = 0;
 	score_t = 0;
-
 	while (str[i])
 	{
 		if (str[i] == '-')
@@ -71,7 +68,17 @@ static size_t		count_t(char *str)
 	return (score_t);
 }
 
-void			parse_arg(int argc, char **argv, t_env *e)
+static void				handlin_check(int i, t_env *e, int argc)
+{
+	if (argc - i > 1)
+		e->i = i + 1;
+	else if (argc - i == 1)
+		e->i = 0;
+	else
+		e->exep = 1;
+}
+
+void					parse_arg(int argc, char **argv, t_env *e)
 {
 	int		i;
 
@@ -80,15 +87,11 @@ void			parse_arg(int argc, char **argv, t_env *e)
 	{
 		if (ft_strlen(argv[i]) == 2 && argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			if (argc - i > 1)
-				e->i = i + 1;
-			else if (argc - i == 1)
-				e->i = 0;
-			else
-				e->exep = 1;
+			handlin_check(i, e, argc);
 			return ;
 		}
-		else if (argv[i][0] == '-' && ft_strlen(argv[i]) != 1 && count_t(argv[i]) < ft_strlen(argv[i]))
+		else if (argv[i][0] == '-' && ft_strlen(argv[i]) != 1 &&
+				count_t(argv[i]) < ft_strlen(argv[i]))
 		{
 			if (on_off(argv[i], e) == 1)
 				return ;

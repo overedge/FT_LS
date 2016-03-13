@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 19:32:48 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/12 15:07:59 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 01:57:22 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void			del_list(t_file **list);
 unsigned long	len_nbr(unsigned long nbr);
 int				list_len(t_file **list);
 int				good_file(char *str, t_env *e);
+void			proces_list(struct stat, t_env *e);
 /*
 ** Sort
 */
@@ -116,5 +117,5 @@ void			env_list(t_file **list, t_env *e);
 /*
 ** Recur List
 */
-int			recur_list(t_file **list, t_file **dir, t_env *e);
+int				recur_list(t_file **list, t_file **dir, t_env *e);
 #endif

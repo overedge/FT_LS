@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 22:10:30 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/10 15:58:05 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 01:09:51 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ void	print_size(struct stat info_file, t_env *e)
 	else
 		ft_printf("%*lld ", e->display->siz, info_file.st_size);
 }
-

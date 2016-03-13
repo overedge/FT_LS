@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_usr_grp.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/13 01:20:05 by nahmed-m          #+#    #+#             */
+/*   Updated: 2016/03/13 01:21:35 by nahmed-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
-void print_group(struct stat info_file, t_env *e)
+void	print_group(struct stat info_file, t_env *e)
 {
 	struct group *group;
 
@@ -12,14 +24,14 @@ void print_group(struct stat info_file, t_env *e)
 	ft_printf("%-*s  ", e->display->grs, group->gr_name);
 }
 
-void print_user(struct stat info_file, t_env *e)
+void	print_user(struct stat info_file, t_env *e)
 {
 	struct passwd *user;
 
 	if ((user = getpwuid(info_file.st_uid)) == NULL)
 	{
 		perror("");
-		return;
+		return ;
 	}
-	ft_printf("%-*s  ", e->display->own , user->pw_name);
+	ft_printf("%-*s  ", e->display->own, user->pw_name);
 }
