@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 15:58:16 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/13 01:18:49 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 13:48:33 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static void		construct_display(t_display *display)
 
 static int		size_env(struct stat info, t_env *e)
 {
-	struct group	*group;
+	struct group	*grou;
 	struct passwd	*user;
 
-	if ((group = getgrgid(info.st_gid)) == NULL)
+	if ((grou = getgrgid(info.st_gid)) == NULL)
 	{
 		perror("");
 		return (1);
@@ -40,8 +40,8 @@ static int		size_env(struct stat info, t_env *e)
 	e->display->nb_block += info.st_blocks;
 	info.st_nlink > e->display->lnk ? e->display->lnk = info.st_nlink : 0;
 	info.st_size > e->display->siz ? e->display->siz = info.st_size : 0;
-	ft_strlen(group->gr_name) > e->display->grs ? e->display->grs = \
-	ft_strlen(group->gr_name) : 0;
+	ft_strlen(grou->gr_name) > e->display->grs ? e->display->grs = \
+	ft_strlen(grou->gr_name) : 0;
 	ft_strlen(user->pw_name) > e->display->own ? e->display->own = \
 	ft_strlen(user->pw_name) : 0;
 	S_ISCHR(info.st_mode & S_IFMT) ? e->display->dev = 1 : 0;

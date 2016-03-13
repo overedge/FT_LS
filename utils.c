@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 20:20:14 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/13 02:01:52 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 13:45:57 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void			print_list(t_file **list, t_env *e)
 	struct stat info_file;
 
 	tmp = *list;
-	if (tmp && e->f_l == 1 && e->overload == 1 && (list_len(list) != 2 || (e->f_rec == 1 && e->f_a == 1)))
+	if (tmp && e->f_l == 1 && e->overload == 1 &&
+			(list_len(list) != 2 || (e->f_rec == 1 && e->f_a == 1)))
 		ft_printf("total %ld\n", e->display->nb_block);
 	while (tmp)
 	{
@@ -76,8 +77,8 @@ void			print_list(t_file **list, t_env *e)
 				lstat(tmp->total, &info_file);
 			if (e->f_l == 1)
 				proces_list(info_file, e);
-		print_path(tmp, info_file, e);
-		tmp = tmp->next;
+			print_path(tmp, info_file, e);
+			tmp = tmp->next;
 		}
 	}
 }
@@ -87,7 +88,6 @@ void			del_list(t_file **list)
 	t_file *tmp;
 
 	tmp = *list;
-
 	while (tmp)
 	{
 		*list = tmp->next;
