@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 20:52:57 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/13 01:53:44 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 03:00:53 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ void	proces_list(struct stat list, t_env *e)
 	print_group(list, e);
 	print_size(list, e);
 	print_time(list);
+}
+
+void	to_next(t_file **list, t_file **list1)
+{
+	*list = (*list)->next;
+	*list1 = (*list)->next;
 }

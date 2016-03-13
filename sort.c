@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 05:22:55 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/13 01:06:15 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/13 02:43:56 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,10 @@ static void			sort_nano(t_file **list, t_env *e)
 				tmp2 = tmp->next;
 			}
 			else
-			{
-				tmp = tmp->next;
-				tmp2 = tmp->next;
-			}
+				to_next(&tmp, &tmp2);
 		}
 		else
-		{
-			tmp = tmp->next;
-			tmp2 = tmp->next;
-		}
+			to_next(&tmp, &tmp2);
 	}
 }
 
